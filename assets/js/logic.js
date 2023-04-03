@@ -1,4 +1,4 @@
-
+var score = 0;
 var startBtn = document.getElementById('start'); // create a variable for the start button on the index.html page
 
 startBtn.addEventListener('click', startQuiz); //add event listener to the startBtn so that an event happens when it is clicked. The event is startQuiz.
@@ -61,11 +61,18 @@ var answer = questions[index].answer;
 // this.textContent refers to the DOM element that triggered the event of clicking the button. it returns the text content of the button that was clicked and compares it with the correct answer.
 
 if (this.textContent === questions[index].answer) {
+    score++; // the quiz is not currently adding the score if the answer is correct so i add this condition and create a variable called score stored at the top of the code.
     showFeedback("Correct!");
 
 } else {
     showFeedback("Wrong!")
 }
+// the question wasn't moving to the next one if the answer was incorrect to i added a condition that says that after the answer the question must increase by 1 and if the questions reaches the end of the length then end the quiz.
+if (index < questions.length - 1) {
+    showQuestion(index + 1);
+  } else {
+    endQuiz();
+  }
 });
 
 questionChoices.appendChild(choiceButton);
