@@ -1,3 +1,19 @@
+
+
+var timeDisplay = document.getElementById("time"); // gets id from html
+var timeSecond = 60; // sets time to 60 seconds
+
+timeDisplay.innerHTML = timeSecond; // takes the 60 seconds from timeSecond variable and displays it in the html with an id of time.
+// decreases the value of timeSecond variable by 1000 milliseconds and displays new value in the timeDisplay id in html.
+var countDown = setInterval (function(){ // created a function that will run every 1000 milliseconds. 
+    timeSecond--;
+    timeDisplay.innerHTML = timeSecond;
+    if(timeSecond <= 0 || timeSecond < 1){
+        clearInterval(countDown); // stops the timer when timeSecond is less than 1 or equal to 0.
+    }
+},1000)
+
+
 var score = 0;
 var startBtn = document.getElementById('start'); // create a variable for the start button on the index.html page
 
@@ -69,7 +85,7 @@ if (this.textContent === questions[index].answer) {
 }
 // the question wasn't moving to the next one if the answer was incorrect to i added a condition that says that after the answer the question must increase by 1 and if the questions reaches the end of the length then end the quiz.
 if (index < questions.length - 1) {
-    showQuestion(index + 1);
+    firstQuestion(index + 1);
   } else {
     endQuiz();
   }
@@ -85,8 +101,10 @@ questionChoices.appendChild(choiceButton);
 function showFeedback(text) {
     var feedbackElement = document.getElementById("feedback");
     feedbackElement.textContent = text;
+    feedbackElement.classList.remove("hide");
 }
 
+//at this point i don't have a timer so I will add a start time variable to the top of this page. I w ill also add a variable that instructs where to display this start time by taking the id from the html. 
 
     
 
