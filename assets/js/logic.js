@@ -82,12 +82,15 @@ if (this.textContent === questions[index].answer) {
 
 } else {
     showFeedback("Wrong!")
+    clearInterval(timer); // pauses the timer when the answer is incorrect.
+    timer = setInterval(updateTimer, 1000); // restarts the timer with an updated score defined in the updateTimer function below.
 }
 // the question wasn't moving to the next one if the answer was incorrect to i added a condition that says that after the answer the question must increase by 1 and if the questions reaches the end of the length then end the quiz.
 if (index < questions.length - 1) {
     firstQuestion(index + 1);
   } else {
     endQuiz();
+
   }
 });
 
@@ -102,8 +105,20 @@ function showFeedback(text) {
     var feedbackElement = document.getElementById("feedback");
     feedbackElement.textContent = text;
     feedbackElement.classList.remove("hide");
-}
+    setTimeout(function() {
+      feedbackElement.classList.add("hide");
+    }, 1000);
+    }
 
+function updateTimer() {
+    var timeElement = document.getElementById("time"); // updateTimer function takes the id of the time element from index.html ans saves it to timeElement.
+    var time = parseInt(timeElement.textContent);// takes the current value of the timer from textContent of timeElement and converts it to an integer
+    if (time <= 0) { // if time is less than or equal to 0 then stop the quiz
+        endQuiz();
+    } else {
+        timeElement.textContent = time - 1; // if not less than 0 then subtract 1 from the timer.
+    }
+    }
 //at this point i don't have a timer so I will add a start time variable to the top of this page. I w ill also add a variable that instructs where to display this start time by taking the id from the html. 
 
     
