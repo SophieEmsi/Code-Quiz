@@ -1,10 +1,18 @@
 var timeDisplay = document.getElementById("time"); // gets id from html
 var timeSecond = 60; // sets time to 60 seconds
+var countDown; // the timer was starting before the quiz so i moved the countdown variable outside of the function.
 
 timeDisplay.innerHTML = timeSecond; // takes the 60 seconds from timeSecond variable and displays it in the html with an id of time.
   // decreases the value of timeSecond variable by 1000 milliseconds and displays new value in the timeDisplay id in html.
+var score = 0;
+  
+var startBtn = document.getElementById("start"); // create a variable for the start button on the index.html page
 
-  var countDown = setInterval (function(){  // created a function that will run every 1000 milliseconds. 
+startBtn.addEventListener("click", startQuiz); // add an event listener to the startBtn var so that an event happens when it is clicked
+
+function startQuiz() {
+
+  countDown = setInterval (function(){  // created a function that will run every 1000 milliseconds. 
     timeSecond--;
     timeDisplay.innerHTML = timeSecond;
     if(timeSecond <= 0 || timeSecond < 1){
@@ -12,14 +20,6 @@ timeDisplay.innerHTML = timeSecond; // takes the 60 seconds from timeSecond vari
     }
 },1000)
   
-  var score = 0;
-  
-  var startBtn = document.getElementById("start"); // create a variable for the start button on the index.html page
-
-
-    startBtn.addEventListener("click", startQuiz); // add an event listener to the startBtn var so that an event happens when it is clicked
-
-  function startQuiz() {
 
     document.getElementById("start-screen").classList.add("hide");// removes the start screen style from the index.html page
     document.getElementById("questions").classList.remove("hide");// adds the questions screen to the page by removing the hide class in index.html using classList to target the elements class.
