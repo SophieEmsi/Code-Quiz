@@ -1,6 +1,6 @@
 var highScore = []; // new variable to store high scores
 
-if (localStorage.getItem("highScore")) { // if an item caled highScore extsts in local storage take the value and convert it to an object and assign it to highScore.
+if (localStorage.getItem("highScore")) { // if an item caled highScore exists in local storage take the value and convert it to an object and assign it to highScore.
     highScore = JSON.parse(localStorage.getItem("highScore")); // if nothing exists in local storage the array stays empty.
   }
 

@@ -1,5 +1,5 @@
-var timeDisplay = document.getElementById("time"); // gets id from html
-var timeSecond = 60; // sets time to 60 seconds
+var timerDisplay = document.getElementById("time"); // gets id from html
+var timerSecond = 60; // sets time to 60 seconds
 var countDown; // the timer was starting before the quiz so i moved the countdown variable outside of the function.
 var score = 0;
 
@@ -11,10 +11,10 @@ startBtn.addEventListener("click", startQuiz); // add an event listener to the s
 function startQuiz() {
 
   countDown = setInterval (function(){  // created a function that will run every 1000 milliseconds. 
-    timeSecond--; // decreases the time by 1
-    timeDisplay.innerHTML = timeSecond; // displays new time
-    if(timeSecond <= 0 || timeSecond < 1){ 
-        clearInterval(countDown);// stops the timer when timeSecond is less than 1 or equal to 0.
+    timerSecond--; // decreases the time by 1
+    timerDisplay.innerHTML = timerSecond; // displays new time
+    if(timerSecond <= 0 || timerSecond < 1){ 
+        clearInterval(countDown);// stops the timer when timerSecond is less than 1 or equal to 0.
         return;
       }
     }, 1000);
@@ -37,11 +37,11 @@ function firstQuestion(index) {// creates function with index as its parameter t
 
 
 
-// the button still didn't add the choices to the page so I will create a loop before the button and see if looping through the questions and its choices availeble will make them appear.
+// having problems with the choices not showing and the button still didn't add the choices to the page so I will create a loop before the button and see if looping through the questions and its choices availeble will make them appear.
 
-// Loop through the possible choices and create a button for each one
+// Loops through the possible choices and create a button for each one
 for (var i = 0; i < questions[index].choices.length; i++) {
-  // Create a new button element for the choice
+  // Create a new button element for the choices from the questions.js array
   var choiceButton = document.createElement("button"); // creats a button for the choices of the questions
 
   // Set the text of the button to the current choice
@@ -66,7 +66,7 @@ for (var i = 0; i < questions[index].choices.length; i++) {
       showFeedback("Correct!");
     } else {
       // Penalize the timer if the answer is incorrect
-      timeSecond -= 10;
+      timerSecond -= 10;
       showFeedback("Wrong!");
       // clearInterval(timer);// pauses the timer when the answer is incorrect.
       // timer = setInterval(updateTimer, 1000);// restarts the timer with an updated score defined in the updateTimer function below.
@@ -96,7 +96,7 @@ function endQuiz() {
 // Get the high score from local storage or set it to 0
 var highScore = localStorage.getItem("highScore") || 0;
 
-// Update the high score if the current score is higher
+// Update the high score if the current score is higher than the highScore and save to local storage
 if (score > highScore) {
   highScore = score;
   localStorage.setItem("highScore", highScore);
