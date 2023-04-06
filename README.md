@@ -25,3 +25,7 @@ The quiz should end when all questions are answered or the timer reaches 0.
 When the game ends, it should display their score and give the user the ability to save their initials and their score
 
 ![gif of quiz](assets/Apr-06-2023%2013-46-10.gif)
+
+https://sophieemsi.github.io/Code-Quiz---Module-6-Challenge---redo/
+
+https://github.com/SophieEmsi/Code-Quiz---Module-6-Challenge---redo/settings/pages
