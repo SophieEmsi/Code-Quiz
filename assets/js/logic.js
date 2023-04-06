@@ -78,7 +78,7 @@ for (var i = 0; i < questions[index].choices.length; i++) {
       endQuiz();
     }
   });
-console.log(showFeedback)
+
 // the question wasn't moving to the next one if the answer was incorrect to i added a condition that says that after the answer the question must increase by 1 and if the questions reaches the end of the length then end the quiz.
 // });
 
@@ -93,6 +93,16 @@ function endQuiz() {
   document.getElementById("final-score").textContent = score; // adds the score to the final-score in the html to display it on page
   document.getElementById("questions").classList.add("hide"); //hides the questions.
 }
+// Get the high score from local storage or set it to 0
+var highScore = localStorage.getItem("highScore") || 0;
+
+// Update the high score if the current score is higher
+if (score > highScore) {
+  highScore = score;
+  localStorage.setItem("highScore", highScore);
+}
+
+
 
 // // this new function of showfeedback will tell the player if they are correct or wrong by selecting the feedback from the html. 
 function showFeedback(text) {
